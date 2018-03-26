@@ -1,0 +1,28 @@
+{
+  "name": "puppeteer-debug",
+  "version": "1.0.0",
+  "description": "Interrupt puppeteer for debug.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/nswbmw/puppeteer-debug.git"
+  },
+  "keywords": [
+    "puppeteer",
+    "debug",
+    "interrupt",
+    "repl"
+  ],
+  "author": "nswbmw",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/nswbmw/puppeteer-debug/issues"
+  },
+  "homepage": "https://gitlab.com/nswbmw/puppeteer-debug#README",
+  "dependencies": {
+    "puppeteer": "*"
+  }
+}
