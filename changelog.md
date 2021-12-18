@@ -1,3 +1,7 @@
+### 2.1.0/2021-12-18
+
+- remove puppeteer deps
+
 ### 2.0.0/2020-09-14
 
 - use `vm.createContext()` instead of `eval()`, keep context

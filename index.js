@@ -1,10 +1,6 @@
 const vm = require('vm')
 const assert = require('assert')
 const readline = require('readline')
-const puppeteer = require('puppeteer')
-
-puppeteer.debug = debug
-module.exports = puppeteer
 
 async function debug (context) {
   context = context || {}
@@ -37,3 +33,5 @@ async function debug (context) {
     })
   })
 }
+
+module.exports = debug

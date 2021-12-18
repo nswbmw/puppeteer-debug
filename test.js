@@ -1,12 +1,13 @@
-const puppeteer = require('.')
+const puppeteer = require('puppeteer')
+const debug = require('.')
 
-;(async function () {
+;(async () => {
   const browser = await puppeteer.launch({
     headless: false
   })
   const page = await browser.newPage()
   console.log('before')
-  await puppeteer.debug({ puppeteer, browser, page })
+  await debug({ browser, page })
   console.log('after')
   await browser.close()
 })().catch(console.error)

@@ -5,14 +5,15 @@
 ### Usage
 
 ```js
-const puppeteer = require('puppeteer-debug')
+const puppeteer = require('puppeteer')
+const debug = require('puppeteer-debug')
 
-;(async function () {
+;(async () => {
   const browser = await puppeteer.launch({
     headless: false
   })
   const page = await browser.newPage()
-  await puppeteer.debug({ browser, page, ... }) // pass initial context(must be object) to REPL.
+  await debug({ browser, page, ... }) // pass initial context(must be object) to REPL.
   await browser.close()
 })()
 ```
