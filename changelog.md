@@ -1,3 +1,7 @@
+### 2.1.2/2026-01-28
+
+- update package.json
+
 ### 2.1.1/2021-12-18
 
 - add playwright test
