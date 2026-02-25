@@ -15,6 +15,24 @@ async function debug (context) {
       output: process.stdout,
       prompt: '> '
     })
+
+    const onUnhandledRejection = (reason) => {
+      console.error(reason)
+      try {
+        if (!rl.closed) rl.prompt()
+      } catch (_) {}
+    }
+
+    const onUncaughtException = (err) => {
+      console.error(err)
+      try {
+        if (!rl.closed) rl.prompt()
+      } catch (_) {}
+    }
+
+    process.on('unhandledRejection', onUnhandledRejection)
+    process.on('uncaughtException', onUncaughtException)
+
     rl.prompt()
     rl.on('line', (line) => {
       // Skip empty lines
@@ -54,6 +72,8 @@ async function debug (context) {
       })
     })
     rl.on('close', () => {
+      process.off('unhandledRejection', onUnhandledRejection)
+      process.off('uncaughtException', onUncaughtException)
       console.log('')
       resolve()
     })

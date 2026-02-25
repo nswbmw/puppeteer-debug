@@ -1,3 +1,7 @@
+### 3.2.0/2026-02-25
+
+- fix: catch `uncaughtException` and `unhandledRejection` during REPL session and keep prompting
+
 ### 3.1.0/2026-02-25
 
 - fix: catch sync exceptions from `vm.runInContext` and handle promise rejections
