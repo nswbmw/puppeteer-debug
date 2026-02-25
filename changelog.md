@@ -1,3 +1,8 @@
+### 3.0.0/2026-02-25
+
+- support `const`/`let`/`var` variable declarations, automatically transform to context properties
+- no longer need to use `this.xxx` for custom variables
+
 ### 2.1.2/2026-01-28
 
 - update package.json

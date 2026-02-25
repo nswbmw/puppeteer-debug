@@ -43,13 +43,11 @@ In REPL:
 > page.type('input', 'hello, world!')
 > page.click('input[type=submit]')
 ...
-> this.page2 = await browser.newPage()
-> this.page2.goto('https://google.com') // or page2.goto('https://google.com')
+> const page2 = await browser.newPage()
+> page2.goto('https://google.com')
 ```
 
 Use `CTRL+C` exit REPL.
-
-**NOTE**: If you define custom variables, please mount to `this`, eg: `this.xxx = yyy`
 
 ### License
 

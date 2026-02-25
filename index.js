@@ -9,7 +9,7 @@ async function debug (context) {
   context.console = console // for debug
   vm.createContext(context)
 
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     const rl = readline.createInterface({
       input: process.stdin,
       output: process.stdout,
@@ -17,8 +17,26 @@ async function debug (context) {
     })
     rl.prompt()
     rl.on('line', (line) => {
+      // Skip empty lines
+      if (!line.trim()) {
+        rl.prompt()
+        return
+      }
+
+      // Transform variable declarations to context properties
+      // Match: const/let/var varName = value
+      const varDeclRegex = /^\s*(const|let|var)\s+([a-zA-Z_$][a-zA-Z0-9_$]*)\s*=\s*(.+)$/
+      const match = line.match(varDeclRegex)
+      
+      let transformedLine = line
+      if (match) {
+        const varName = match[2]
+        const varValue = match[3]
+        transformedLine = `this.${varName} = ${varValue}`
+      }
+      
       vm.runInContext(`(async () => {
-        ${line}
+        ${transformedLine}
       })()`, context).then(() => {
         rl.prompt()
       }).catch(e => {
@@ -27,7 +45,6 @@ async function debug (context) {
       })
     })
     rl.on('close', () => {
-      rl.close()
       console.log('')
       resolve()
     })
