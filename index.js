@@ -34,10 +34,19 @@ async function debug (context) {
         const varValue = match[3]
         transformedLine = `this.${varName} = ${varValue}`
       }
-      
-      vm.runInContext(`(async () => {
-        ${transformedLine}
-      })()`, context).then(() => {
+
+      let result
+      try {
+        result = vm.runInContext(`(async () => {
+          ${transformedLine}
+        })()`, context)
+      } catch (e) {
+        console.error(e)
+        rl.prompt()
+        return
+      }
+
+      Promise.resolve(result).then(() => {
         rl.prompt()
       }).catch(e => {
         console.error(e)

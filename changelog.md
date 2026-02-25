@@ -1,3 +1,7 @@
+### 3.1.0/2026-02-25
+
+- fix: catch sync exceptions from `vm.runInContext` and handle promise rejections
+
 ### 3.0.0/2026-02-25
 
 - support `const`/`let`/`var` variable declarations, automatically transform to context properties
